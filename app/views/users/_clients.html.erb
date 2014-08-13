@@ -18,7 +18,8 @@
       <div id="collapse<%= house.id %>" class="panel-collapse collapse">
         <div class="panel-body client">
           <h4><%= link_to house.address, user_household_path(@user.id, house) %>
-          <small> | <%= link_to 'Edit Household Info', edit_user_household_path(@user.id, house) %> | <a id="pet-modal" data-target="#petModal" href="#" data-id="<%= house.id %>" data-value="<%= house.id %>">Add New Pet</a></h4> 
+          <small> | <%= link_to 'Edit Household Info', edit_user_household_path(@user.id, house) %> | <a id="pet-modal" data-target="#petModal" href="#" data-id="<%= house.id %>" data-value="<%= house.id %>">Add New Pet</a>
+          </h4> 
             <p><strong>Pets:</strong></p>
             <% house.pets.each do |pet| %>
               <div class="col-sm-6 col-xs-12">

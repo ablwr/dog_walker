@@ -1,5 +1,7 @@
 <h2>Your Household</h2>
-<p><small class="owner"><%= link_to 'Edit Household Info', edit_user_household_path(@user.household.walker_id, @user.household) %> | <a id="pet-modal" data-target="#petModal" href="#" data-id="<%= @user.household.id %>" data-value="<%= @user.household.id %>">Add New Pet</a></small></p>
+<p>
+  <small class="owner"><%= link_to 'Edit Household Info', edit_user_household_path(@user.household.walker_id, @user.household) %> | 
+  <a id="pet-modal" data-target="#petModal" href="#" data-id="<%= @user.household.id %>" data-value="<%= @user.household.id %>">Add New Pet</a></small></p>
 
 <p><strong>Phone: </strong><%= @user.household.phone %></p>
 <p><strong>Address:</strong> <%= @user.household.address %></p>

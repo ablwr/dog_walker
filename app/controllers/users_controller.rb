@@ -8,7 +8,7 @@ class UsersController < ApplicationController
       format.html { redirect_to root_path, notice: 'Your email has been sent.'}
     end
   end
-  
+
   def show
     if @user.admin == true
       @walkers = User.where(:walker => true)
