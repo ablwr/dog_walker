@@ -19,11 +19,18 @@ class User < ActiveRecord::Base
   validates_processing_of :avatar
 
   def assign_household
-    household = Household.find_by(email: self.email) || household = Household.create(email: self.email, address: "Please update your profile with your current address.")
-    household.owner_name = self.name
-    household.owner_id = self.id
-    household.phone = self.phone
-    household.walker_id = 17
+    household = Household.find_by(email: self.email) 
+    if household
+      household.owner_name = self.name
+      household.owner_id = self.id
+      household.phone = self.phone
+    else 
+      household = Household.create(email: self.email, address: "Please update your profile with your current address.")
+      household.owner_name = self.name
+      household.owner_id = self.id
+      household.phone = self.phone
+      household.walker_id = 17
+    end
     household.save
   end
 
@@ -39,7 +46,6 @@ class User < ActiveRecord::Base
     @client = Twilio::REST::Client.new(ENV['TWILIO_SID'],ENV['TWILIO_AUTH_TOKEN'])
     @client.account.messages.create(
       :from => '+18037674105',
-      # :to => phone,
       :to => ENV['MY_PHONE'],
       :body => body
     )
